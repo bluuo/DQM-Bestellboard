@@ -1,0 +1,251 @@
+:root {
+  color-scheme: light dark;
+  --hintergrund: #f2f4f7;
+  --hintergrund-dunkel: #1d1f27;
+  --text: #1a1f36;
+  --text-dunkel: #f5f7fb;
+  --primaer: #0052cc;
+  --primaer-hell: #3380ff;
+  --akzent: #27ae60;
+  --warnung: #d35400;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--hintergrund);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+body.admin-ansicht {
+  background: #fff7f0;
+}
+
+.kopfbereich,
+.fussbereich {
+  background: white;
+  padding: 1.5rem clamp(1rem, 5vw, 3rem);
+  box-shadow: 0 1px 8px rgba(15, 23, 42, 0.08);
+}
+
+.kopfbereich h1 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.hauptbereich {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: 0 clamp(1rem, 5vw, 3rem) 3rem;
+}
+
+.formularbereich,
+.bestelluebersicht {
+  background: white;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formular {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formfeld,
+.formfeld-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formfeld-inline {
+  flex-direction: row;
+  align-items: center;
+}
+
+.formfeld label {
+  font-weight: 600;
+}
+
+.formfeld input,
+.formfeld textarea,
+.formfeld select {
+  border: 1px solid rgba(15, 23, 42, 0.15);
+  border-radius: 12px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.formfeld textarea {
+  resize: vertical;
+}
+
+.formular-aktionsbereich {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+button {
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--primaer);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(0, 82, 204, 0.2);
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+button.sekundaer {
+  background: rgba(15, 23, 42, 0.1);
+  color: inherit;
+}
+
+.optionen-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.optionengruppe {
+  border: 1px dashed rgba(15, 23, 42, 0.15);
+  padding: 0.75rem;
+  border-radius: 12px;
+}
+
+.optionengruppe h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.optionengruppe label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+}
+
+.optionengruppe small {
+  color: rgba(15, 23, 42, 0.6);
+}
+
+.bestellungen-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bestellkarte {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 16px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.bestellkarte h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.bestellkarte ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.bestellkarte .aktionen {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.statushinweis {
+  min-height: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--primaer);
+}
+
+.statushinweis.fehlermeldung {
+  color: var(--warnung);
+}
+
+.summenanzeige {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.beschreibung {
+  color: rgba(15, 23, 42, 0.7);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(39, 174, 96, 0.12);
+  color: var(--akzent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--hintergrund-dunkel);
+    color: var(--text-dunkel);
+  }
+
+  .kopfbereich,
+  .fussbereich,
+  .formularbereich,
+  .bestelluebersicht,
+  .bestellkarte {
+    background: #262b3a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: var(--text-dunkel);
+  }
+
+  .formfeld input,
+  .formfeld textarea,
+  .formfeld select {
+    background: rgba(21, 23, 31, 0.9);
+    color: var(--text-dunkel);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  button.sekundaer {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
