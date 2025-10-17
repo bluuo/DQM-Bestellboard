@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DQM Bestellboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="kopfbereich">
+      <h1>DQM Bestellboard</h1>
+      <p>Bestelle Produkte in Echtzeit – keine Anmeldung erforderlich.</p>
+    </header>
+
+    <main class="hauptbereich">
+      <section class="formularbereich">
+        <h2>Neue Bestellung</h2>
+        <form id="bestellFormular" class="formular">
+          <div class="formfeld">
+            <label for="bestellerName">Dein Name</label>
+            <input type="text" id="bestellerName" name="bestellerName" required maxlength="60" placeholder="z.B. Alex" />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktAuswahl">Produkt</label>
+            <select id="produktAuswahl" required>
+              <option value="">Bitte wählen …</option>
+            </select>
+            <small id="produktBeschreibung" class="beschreibung"></small>
+          </div>
+
+          <div id="optionenContainer" class="optionen-container"></div>
+
+          <div class="formfeld">
+            <label for="mengeEingabe">Menge</label>
+            <input type="number" id="mengeEingabe" name="menge" min="1" value="1" required />
+          </div>
+
+          <div class="formfeld">
+            <label for="kommentarEingabe">Kommentar (optional)</label>
+            <textarea id="kommentarEingabe" maxlength="240" placeholder="Sonderwünsche …"></textarea>
+          </div>
+
+          <div class="formular-aktionsbereich">
+            <button type="submit" id="bestellSpeichernButton">Bestellung speichern</button>
+            <button type="button" id="formularZuruecksetzenButton" class="sekundaer">Zurücksetzen</button>
+          </div>
+          <p id="formularStatus" class="statushinweis" role="status"></p>
+        </form>
+      </section>
+
+      <section class="bestelluebersicht">
+        <div class="bestellueberschrift">
+          <h2>Aktuelle Bestellungen</h2>
+          <div class="summenanzeige">
+            <span>Gesamtsumme:</span>
+            <strong id="gesamtSummeAnzeige">–</strong>
+          </div>
+        </div>
+        <div id="bestellungenListe" class="bestellungen-liste"></div>
+      </section>
+    </main>
+
+    <footer class="fussbereich">
+      <p>
+        Admin? → <a href="admin.html">Zur Produktverwaltung</a>
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

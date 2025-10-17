@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DQM Produktverwaltung</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-ansicht">
+    <header class="kopfbereich">
+      <h1>Produktverwaltung</h1>
+      <p>Administriere Produkte über Firebase Cloud Functions.</p>
+    </header>
+
+    <main class="hauptbereich">
+      <section class="formularbereich">
+        <h2>Produkt erstellen oder aktualisieren</h2>
+        <form id="produktFormular" class="formular">
+          <div class="formfeld">
+            <label for="adminTokenEingabe">Admin-Token</label>
+            <input type="password" id="adminTokenEingabe" required autocomplete="current-password" placeholder="Geheimes Admin-Token" />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktIdEingabe">Produkt-ID (für Update)</label>
+            <input type="text" id="produktIdEingabe" placeholder="Leer lassen für neues Produkt" />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktNameEingabe">Produktname</label>
+            <input type="text" id="produktNameEingabe" required />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktBeschreibungEingabe">Beschreibung</label>
+            <textarea id="produktBeschreibungEingabe" rows="2"></textarea>
+          </div>
+
+          <div class="formfeld">
+            <label for="produktPreisEingabe">Preis (Brutto, je Einheit)</label>
+            <input type="number" id="produktPreisEingabe" min="0" step="0.01" required />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktWaehrungEingabe">Währungscode</label>
+            <input type="text" id="produktWaehrungEingabe" maxlength="3" placeholder="z.B. EUR" />
+          </div>
+
+          <div class="formfeld">
+            <label for="produktKategorieEingabe">Kategorie</label>
+            <input type="text" id="produktKategorieEingabe" />
+          </div>
+
+          <div class="formfeld-inline">
+            <input type="checkbox" id="produktAktivCheckbox" checked />
+            <label for="produktAktivCheckbox">Produkt ist aktiv</label>
+          </div>
+
+          <div class="formfeld">
+            <label for="optionenDefinitionEingabe">Optionen-Definition (JSON)</label>
+            <textarea id="optionenDefinitionEingabe" rows="6" placeholder='{"gruppen": []}'></textarea>
+            <small>
+              Beispiel siehe README. Struktur: Gruppen mit Typ <code>single</code> oder <code>multi</code>.
+            </small>
+          </div>
+
+          <div class="formular-aktionsbereich">
+            <button type="submit" id="produktSpeichernButton">Produkt speichern</button>
+            <button type="button" id="formularLeerenButton" class="sekundaer">Formular leeren</button>
+          </div>
+          <p id="adminStatus" class="statushinweis" role="status"></p>
+        </form>
+      </section>
+
+      <section class="bestelluebersicht">
+        <h2>Vorhandene Produkte</h2>
+        <div id="produktListe" class="bestellungen-liste"></div>
+      </section>
+    </main>
+
+    <footer class="fussbereich">
+      <p>
+        Zurück zum <a href="index.html">Bestellboard</a>
+      </p>
+    </footer>
+
+    <script type="module" src="admin.js"></script>
+  </body>
+</html>

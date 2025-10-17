@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /produkte/{produktId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /bestellungen/{bestellungId} {
+      allow read: if true;
+
+      allow create: if request.auth == null
+        && request.resource.data.geraeteId is string
+        && request.resource.data.bestellerName is string
+        && request.resource.data.produktId is string
+        && request.resource.data.menge is int
+        && request.resource.data.menge > 0
+        && request.resource.data.einzelpreisBerechnet is number
+        && request.resource.data.gesamtpreisBerechnet is number;
+
+      allow update: if request.auth == null
+        && resource.data.geraeteId == request.resource.data.geraeteId
+        && request.resource.data.menge is int
+        && request.resource.data.menge > 0;
+
+      allow delete: if false;
+    }
+  }
+}

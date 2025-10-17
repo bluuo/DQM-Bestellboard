@@ -1,0 +1,9 @@
+functions/node_modules
+firebase-debug.log
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
